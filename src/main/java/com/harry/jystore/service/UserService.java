@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface UserService extends Service<User> {
   public List<User> findalls();
-  public List<User> findallss();
-
+  //public List<User> findallss();
+  public void update(User user);
 }
