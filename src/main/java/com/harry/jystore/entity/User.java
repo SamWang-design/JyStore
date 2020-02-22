@@ -27,7 +27,7 @@ public class User {
    @Column
    private String last_login_time;
    @Column
-   private int status;
+   private Integer status;
    @Column
    private String username;
    @Column

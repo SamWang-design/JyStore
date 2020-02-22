@@ -3,8 +3,11 @@ package com.harry.jystore.service.impl;
 import com.harry.jystore.core.AbstractService;
 import com.harry.jystore.dao.UserMapper;
 import com.harry.jystore.dao.UserMapperMybatis;
+import com.harry.jystore.dao.UserMapperjpa;
 import com.harry.jystore.entity.User;
 import com.harry.jystore.service.UserService;
+import com.harry.jystore.util.DateUtil;
+import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,9 @@ public class UserServiceImpl extends AbstractService<User>
 
     @Autowired
     UserMapperMybatis userMapperMybatis;
+
+    @Autowired
+    UserMapperjpa userMapperjpa;
 
     /**
      * 通用mapper
@@ -36,7 +42,15 @@ public class UserServiceImpl extends AbstractService<User>
         userMapperMybatis.update(user);
     }
 
+    public void add(User user){
+        user.setCreateTime(DateUtil.getCurrent24DateTotal());
+        user.setStatus(0);
+        int insert = userMapper.insert(user);
+    }
 
+    public void delete(User user){
+        userMapperjpa.delete(user);
+    }
     /*public List<User> findallss() {
         List<User> users =this.findAll();
         return users;

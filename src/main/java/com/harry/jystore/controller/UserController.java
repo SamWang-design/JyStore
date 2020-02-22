@@ -33,4 +33,16 @@ public class UserController {
         userService.update(user);
         return ResultGenerator.genSuccessResult();
     }
+    @ApiOperation("新增")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public JsonUtil add(@RequestBody User user){
+        userService.add(user);
+        return ResultGenerator.genSuccessResult();
+    }
+    @ApiOperation("删除")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public JsonUtil delete(@RequestBody User user){
+        userService.delete(user);
+        return ResultGenerator.genSuccessResult();
+    }
 }

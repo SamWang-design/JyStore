@@ -22,6 +22,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
 #mybatis配置
 mybatis:
   #实体类所在包名
